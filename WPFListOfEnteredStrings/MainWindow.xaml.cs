@@ -36,12 +36,35 @@ namespace WPFListOfEnteredStrings
             {
                 List.Items.Add(Text.Text);
             }
+            Text.Clear();
         }
 
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if(List.SelectedItem!=null)
+            {
+                TextBoxDetailForm textBoxEdit = new TextBoxDetailForm();
+                textBoxEdit.TextEdit.AppendText((string)List.SelectedItem);
+                textBoxEdit.ShowDialog();
+                if( (textBoxEdit.DialogResult == true))
+                {                    
+                    List.Items[List.SelectedIndex] = textBoxEdit.ModifiedLine();
+                }
+                
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            List.Items.Remove(List.SelectedItem);
+        }
+        
     }
 }
