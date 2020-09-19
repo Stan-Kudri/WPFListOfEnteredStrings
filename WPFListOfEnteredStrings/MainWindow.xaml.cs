@@ -26,17 +26,31 @@ namespace WPFListOfEnteredStrings
             
         }
 
+        private bool IsValidToStr()
+        {
+            if ( TextInputField.Text.Length != 0 )
+                return true;
+            else
+                MessageBox.Show("Поле для ввода текста пустое!");
+
+            return false;
+        }
+
+        private bool IsValidNullString()
+        {
+            if (ListOfStrings.SelectedItem == null)
+                return false;
+
+            else
+                return true;
+        }
+
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (Text.Text.Length == 0)
-            {
-                MessageBox.Show("Поле для ввода текста пустое!");
-            }
-            else
-            {
-                List.Items.Add(Text.Text);
-            }
-            Text.Clear();
+            if ( IsValidToStr() )
+                ListOfStrings.Items.Add(TextInputField.Text);
+
+            TextInputField.Clear();
         }
 
 
@@ -48,14 +62,15 @@ namespace WPFListOfEnteredStrings
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if(List.SelectedItem!=null)
+            if (IsValidNullString())
             {
                 TextBoxDetailForm textBoxEdit = new TextBoxDetailForm();
-                textBoxEdit.TextEdit.AppendText((string)List.SelectedItem);
+                textBoxEdit.txtInput.AppendText((string)ListOfStrings.SelectedItem);
                 textBoxEdit.ShowDialog();
-                if( (textBoxEdit.DialogResult == true))
-                {                    
-                    List.Items[List.SelectedIndex] = textBoxEdit.ModifiedLine();
+
+                if( textBoxEdit.DialogResult == true )
+                {
+                    ListOfStrings.Items[ListOfStrings.SelectedIndex] = textBoxEdit.ModifiedString;
                 }
                 
             }
@@ -63,7 +78,7 @@ namespace WPFListOfEnteredStrings
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            List.Items.Remove(List.SelectedItem);
+            ListOfStrings.Items.RemoveAt(ListOfStrings.SelectedIndex);
         }
         
     }

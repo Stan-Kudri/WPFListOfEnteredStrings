@@ -24,23 +24,41 @@ namespace WPFListOfEnteredStrings
             InitializeComponent();
         }
 
+        private string modifiedString;
+
+        public string ModifiedString
+        {
+            get
+            {
+                return txtInput.Text;
+            }
+            set
+            {
+                modifiedString = txtInput.Text;
+            }
+        }
+
+        private bool IsValid()
+        {
+            if ( txtInput.Text.Length > 0 )
+            {
+                return true;
+            }
+            MessageBox.Show("Строка не может быть пустой!!");
+            return false;
+        }
+
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if(TextEdit.Text.Length!=0)
+            if( IsValid() )
             {
                 DialogResult = true;
                 Close();
             }
-            else
-            {
-                MessageBox.Show("Строка не может быть пустой!");
-            }
+            return;
         }
 
-        public string ModifiedLine()
-        {
-            return TextEdit.Text;
-        }
 
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
