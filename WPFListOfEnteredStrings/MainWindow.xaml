@@ -10,7 +10,6 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"></RowDefinition>
-            <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="0.25*"></RowDefinition>
             <RowDefinition Height="0.25*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -21,17 +20,23 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="ListOfStrings" Grid.Row="0" Grid.ColumnSpan="3">  </ListView>
+        <ListView x:Name="ListOfStrings" Grid.Row="0" Grid.ColumnSpan="3" ItemsSource="{Binding DaysAndWorkouts}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Date, StringFormat='dd.MM.yyyy' }" Header="Дата"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=TrainingСontent}" Header="Содержание"></GridViewColumn>
+                </GridView>
+            </ListView.View>            
+        </ListView>
 
-        <TextBox x:Name="TextInputField" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3"> </TextBox>
 
-        <Button Grid.Row="2" Grid.Column="0" x:Name="Add" Content="Добавить" Click="Add_Click"> </Button>
+        <Button Grid.Row="1" Grid.Column="0" x:Name="Add" Content="Добавить" Click="Add_Click"> </Button>
 
-        <Button Grid.Row="2" Grid.Column="1" x:Name="Edit" Content="Редактировать" Click="Edit_Click"> </Button>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="Edit" Content="Редактировать" Click="Edit_Click"> </Button>
 
-        <Button Grid.Row="2" Grid.Column="2" x:Name="Delete" Content="Удалить" Click="Delete_Click"></Button>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="Delete" Content="Удалить" Click="Delete_Click"></Button>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="3" x:Name="Exit" Content="Выход" Click="Exit_Click"></Button>
+        <Button Grid.Row="2" Grid.ColumnSpan="3" x:Name="Exit" Content="Выход" Click="Exit_Click"></Button>
 
     </Grid>
 </Window>

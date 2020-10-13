@@ -55,9 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TextBoxDetailForm.xaml.cs">
-      <DependentUpon>TextBoxDetailForm.xaml</DependentUpon>
+    <Compile Include="FormToAdd.xaml.cs">
+      <DependentUpon>FormToAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormToEditDayTraining.xaml.cs">
+      <DependentUpon>FormToEditDayTraining.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FormToAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormToEditDayTraining.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,10 +81,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TextBoxDetailForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
